@@ -1,0 +1,2 @@
+# kmg-tool-cli
+KMGツールのCLI。
