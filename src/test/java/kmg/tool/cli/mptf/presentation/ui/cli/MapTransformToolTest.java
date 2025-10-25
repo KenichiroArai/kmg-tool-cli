@@ -35,8 +35,8 @@ import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
-import kmg.tool.base.input.presentation.ui.cli.AbstractPlainContentInputTool;
 import kmg.tool.base.mptf.application.service.MapTransformService;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
 
 /**
  * マッピング変換ツールのテスト<br>

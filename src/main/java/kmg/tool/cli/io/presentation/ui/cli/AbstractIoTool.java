@@ -9,9 +9,8 @@ import kmg.core.domain.service.KmgPfaMeasService;
 import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
-import kmg.tool.base.cmn.presentation.ui.cli.AbstractTool;
 import kmg.tool.base.io.domain.service.IoService;
-import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
+import kmg.tool.cli.cmn.presentation.ui.cli.AbstractTool;
 
 /**
  * 入出力ツール抽象クラス

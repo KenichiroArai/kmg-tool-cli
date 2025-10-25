@@ -15,8 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
-import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
 import kmg.tool.base.fldcrt.application.service.FieldCreationService;
+import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 
 /**
  * フィールド作成ツールのテスト<br>

@@ -13,7 +13,6 @@ import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolLogMsgTypes;
 import kmg.tool.base.two2one.domain.service.Two2OneService;
 import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
-import kmg.tool.cli.two2one.presentation.ui.cli.AbstractTwo2OneTool;
 
 /**
  * シンプル2入力ファイルから1出力ファイルへの変換ツールサービス抽象クラス

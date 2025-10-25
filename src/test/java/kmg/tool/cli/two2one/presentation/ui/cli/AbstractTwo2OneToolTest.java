@@ -21,8 +21,8 @@ import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolLogMsgTypes;
-import kmg.tool.base.io.presentation.ui.cli.AbstractIoTool;
 import kmg.tool.base.two2one.domain.service.Two2OneService;
+import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
 
 /**
  * AbstractTwo2OneToolのテストクラス

@@ -21,7 +21,6 @@ import kmg.tool.base.input.domain.service.PlainContentInputServic;
 import kmg.tool.base.jdts.application.service.JdtsService;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
-import kmg.tool.cli.jdts.presentation.ui.cli.JavadocTagSetterTool;
 
 /**
  * Javadocタグ設定ツール<br>

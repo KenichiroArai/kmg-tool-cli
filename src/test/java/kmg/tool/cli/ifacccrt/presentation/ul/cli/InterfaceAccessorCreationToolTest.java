@@ -18,7 +18,7 @@ import org.mockito.quality.Strictness;
 import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.tool.base.acccrt.application.service.AccessorCreationService;
-import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
+import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 
 /**
  * インタフェースのアクセサ作成ツールのテスト<br>

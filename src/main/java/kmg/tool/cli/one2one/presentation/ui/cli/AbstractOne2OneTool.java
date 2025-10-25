@@ -9,7 +9,6 @@ import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolLogMsgTypes;
 import kmg.tool.base.one2one.domain.service.One2OneService;
 import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
-import kmg.tool.cli.one2one.presentation.ui.cli.AbstractOne2OneTool;
 
 /**
  * 1入力ファイルから1出力ファイルへの変換ツールサービス抽象クラス

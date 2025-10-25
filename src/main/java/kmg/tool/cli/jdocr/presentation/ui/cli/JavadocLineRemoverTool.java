@@ -15,7 +15,6 @@ import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
-import kmg.tool.cli.jdocr.presentation.ui.cli.JavadocLineRemoverTool;
 
 /**
  * Javadoc行削除ツール

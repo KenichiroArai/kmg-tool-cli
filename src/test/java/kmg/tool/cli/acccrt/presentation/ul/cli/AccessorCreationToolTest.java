@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.tool.base.acccrt.application.service.AccessorCreationService;
+import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 
 /**
  * アクセサ作成ツールのテスト<br>
@@ -343,7 +344,7 @@ public class AccessorCreationToolTest extends AbstractKmgTest {
     public void testInheritance_normalExtendsAbstractDtcTool() {
 
         /* 期待値の定義 */
-        final Class<?> expectedSuperClass = kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool.class;
+        final Class<?> expectedSuperClass = AbstractDtcTool.class;
 
         /* 準備 */
         final AccessorCreationTool localTestTarget = new AccessorCreationTool();

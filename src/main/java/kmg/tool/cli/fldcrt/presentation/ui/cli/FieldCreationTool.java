@@ -5,9 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
 import kmg.tool.base.fldcrt.application.service.FieldCreationService;
-import kmg.tool.cli.fldcrt.presentation.ui.cli.FieldCreationTool;
+import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 
 /**
  * <h2>フィールド作成ツール</h2>

@@ -25,9 +25,9 @@ import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
-import kmg.tool.base.input.presentation.ui.cli.AbstractInputTool;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 
 /**
  * Javadoc行削除ツールのテスト<br>

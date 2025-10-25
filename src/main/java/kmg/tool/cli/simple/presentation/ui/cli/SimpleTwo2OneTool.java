@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.simple.application.service.SimpleTwo2OneService;
-import kmg.tool.cli.simple.presentation.ui.cli.SimpleTwo2OneTool;
 import kmg.tool.cli.two2one.presentation.ui.cli.AbstractTwo2OneTool;
 
 /**

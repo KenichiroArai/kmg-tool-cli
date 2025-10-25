@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.acccrt.application.service.AccessorCreationService;
-import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
-import kmg.tool.cli.ifacccrt.presentation.ul.cli.InterfaceAccessorCreationTool;
+import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 
 /**
  * <h2>インタフェースのアクセサ作成ツール</h2>
