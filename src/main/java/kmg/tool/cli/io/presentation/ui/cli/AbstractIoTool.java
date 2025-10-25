@@ -11,7 +11,7 @@ import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.cmn.presentation.ui.cli.AbstractTool;
 import kmg.tool.base.io.domain.service.IoService;
-import kmg.tool.base.io.presentation.ui.cli.AbstractIoTool;
+import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
 
 /**
  * 入出力ツール抽象クラス

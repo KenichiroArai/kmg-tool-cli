@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
-import kmg.tool.base.e2scc.presentation.ui.cli.Enum2SwitchCaseCreationTool;
 import kmg.tool.base.e2scc.service.Enum2SwitchCaseCreationService;
+import kmg.tool.cli.e2scc.presentation.ui.cli.Enum2SwitchCaseCreationTool;
 
 /**
  * <h2>列挙型からcase文作成ツール</h2>

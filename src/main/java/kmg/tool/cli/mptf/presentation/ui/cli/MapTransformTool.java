@@ -18,10 +18,10 @@ import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
-import kmg.tool.base.input.presentation.ui.cli.AbstractInputTool;
-import kmg.tool.base.input.presentation.ui.cli.AbstractPlainContentInputTool;
 import kmg.tool.base.mptf.application.service.MapTransformService;
-import kmg.tool.base.mptf.presentation.ui.cli.MapTransformTool;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
+import kmg.tool.cli.mptf.presentation.ui.cli.MapTransformTool;
 
 /**
  * マッピング変換ツール<br>

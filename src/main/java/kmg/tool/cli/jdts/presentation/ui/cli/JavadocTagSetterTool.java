@@ -18,10 +18,10 @@ import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
-import kmg.tool.base.input.presentation.ui.cli.AbstractInputTool;
-import kmg.tool.base.input.presentation.ui.cli.AbstractPlainContentInputTool;
 import kmg.tool.base.jdts.application.service.JdtsService;
-import kmg.tool.base.jdts.presentation.ui.cli.JavadocTagSetterTool;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
+import kmg.tool.cli.jdts.presentation.ui.cli.JavadocTagSetterTool;
 
 /**
  * Javadocタグ設定ツール<br>

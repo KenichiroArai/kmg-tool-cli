@@ -12,10 +12,10 @@ import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
-import kmg.tool.base.input.presentation.ui.cli.AbstractInputTool;
-import kmg.tool.base.jdocr.presentation.ui.cli.JavadocLineRemoverTool;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
+import kmg.tool.cli.jdocr.presentation.ui.cli.JavadocLineRemoverTool;
 
 /**
  * Javadoc行削除ツール

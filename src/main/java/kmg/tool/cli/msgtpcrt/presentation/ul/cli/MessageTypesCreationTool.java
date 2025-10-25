@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
-import kmg.tool.base.msgtpcrt.presentation.ul.cli.MessageTypesCreationTool;
 import kmg.tool.base.msgtpcrt.service.MessageTypesCreationService;
+import kmg.tool.cli.msgtpcrt.presentation.ul.cli.MessageTypesCreationTool;
 
 /**
  * <h2>メッセージの種類作成ツール</h2>

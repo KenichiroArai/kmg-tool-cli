@@ -7,7 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.dtc.presentation.ui.cli.AbstractDtcTool;
 import kmg.tool.base.fldcrt.application.service.FieldCreationService;
-import kmg.tool.base.fldcrt.presentation.ui.cli.FieldCreationTool;
+import kmg.tool.cli.fldcrt.presentation.ui.cli.FieldCreationTool;
 
 /**
  * <h2>フィールド作成ツール</h2>

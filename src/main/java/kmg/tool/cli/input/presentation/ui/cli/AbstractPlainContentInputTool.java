@@ -4,7 +4,7 @@ import java.nio.file.Path;
 
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
-import kmg.tool.base.input.presentation.ui.cli.AbstractInputTool;
+import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 
 /**
  * プレーンコンテンツ入力処理ツール抽象クラス

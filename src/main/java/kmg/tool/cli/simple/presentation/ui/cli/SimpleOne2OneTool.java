@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.one2one.application.service.SimpleOne2OneService;
-import kmg.tool.base.one2one.presentation.ui.cli.AbstractOne2OneTool;
-import kmg.tool.base.simple.presentation.ui.cli.SimpleOne2OneTool;
+import kmg.tool.cli.one2one.presentation.ui.cli.AbstractOne2OneTool;
+import kmg.tool.cli.simple.presentation.ui.cli.SimpleOne2OneTool;
 
 /**
  * シンプル1入力ファイルから1出力ファイルへの変換ツール
