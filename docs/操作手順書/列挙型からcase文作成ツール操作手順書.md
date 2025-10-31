@@ -140,10 +140,10 @@ kmg-tool/
 
    ```bash
    # Mavenを使用して実行
-   mvn exec:java -Dexec.mainClass="kmg.tool.e2scc.presentation.ui.cli.Enum2SwitchCaseCreationTool"
+   mvn exec:java -Dexec.mainClass="kmg.tool.cli.e2scc.presentation.ui.cli.Enum2SwitchCaseCreationTool"
 
    # または、JARファイルから実行
-   java -cp target/classes:target/dependency/* kmg.tool.e2scc.presentation.ui.cli.Enum2SwitchCaseCreationTool
+   java -cp target/classes:target/dependency/* kmg.tool.cli.e2scc.presentation.ui.cli.Enum2SwitchCaseCreationTool
    ```
 
 ### 5.2 コマンドライン引数

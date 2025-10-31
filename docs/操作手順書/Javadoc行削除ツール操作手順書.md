@@ -80,10 +80,10 @@ D:\wk\kmg-core\src\test\java\kmg\core\infrastructure\model\val\impl\KmgValsModel
 
    ```bash
    # Mavenを使用して実行
-   mvn exec:java -Dexec.mainClass="kmg.tool.jdocr.presentation.ui.cli.JavadocLineRemoverTool"
+   mvn exec:java -Dexec.mainClass="kmg.tool.cli.jdocr.presentation.ui.cli.JavadocLineRemoverTool"
 
    # または、JARファイルから実行
-   java -cp target/classes:target/dependency/* kmg.tool.jdocr.presentation.ui.cli.JavadocLineRemoverTool
+   java -cp target/classes:target/dependency/* kmg.tool.cli.jdocr.presentation.ui.cli.JavadocLineRemoverTool
    ```
 
 ### 4.2 コマンドライン引数

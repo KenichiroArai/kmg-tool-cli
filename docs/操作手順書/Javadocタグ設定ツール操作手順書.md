@@ -78,7 +78,7 @@ D:\wk\kmg-core\src\main\java\kmg\tool\jdts\presentation\ui\cli\JavadocTagSetterT
 
    # 入力ファイルを作成
    cat > work\io\input.txt << 'EOF'
-   D:\wk\kmg-core\src\main\java\kmg\tool\jdts\presentation\ui\cli\JavadocTagSetterTool.java
+   D:\wk\kmg-core\src\main\java\kmg\tool\cli\jdts\presentation\ui\cli\JavadocTagSetterTool.java
    EOF
    ```
 
@@ -96,10 +96,10 @@ D:\wk\kmg-core\src\main\java\kmg\tool\jdts\presentation\ui\cli\JavadocTagSetterT
 
    ```bash
    # Mavenを使用して実行
-   mvn exec:java -Dexec.mainClass="kmg.tool.jdts.presentation.ui.cli.JavadocTagSetterTool"
+   mvn exec:java -Dexec.mainClass="kmg.tool.cli.jdts.presentation.ui.cli.JavadocTagSetterTool"
 
    # または、JARファイルから実行
-   java -cp target\classes:target\dependency\* kmg.tool.jdts.presentation.ui.cli.JavadocTagSetterTool
+   java -cp target\classes:target\dependency\* kmg.tool.cli.jdts.presentation.ui.cli.JavadocTagSetterTool
    ```
 
 ### 5.2 コマンドライン引数
@@ -114,7 +114,7 @@ D:\wk\kmg-core\src\main\java\kmg\tool\jdts\presentation\ui\cli\JavadocTagSetterT
 [INFO] Javadocタグ設定ツール開始
 [INFO] 入力ファイル: work\io\input.txt
 [INFO] テンプレートファイル: work\io\template\JavadocTagSetterTool.yml
-[INFO] 対象ファイル: src\main\java\kmg\tool\jdts\presentation\ui\cli\JavadocTagSetterTool.java
+[INFO] 対象ファイル: src\main\java\kmg\tool\cli\jdts\presentation\ui\cli\JavadocTagSetterTool.java
 [INFO] 処理完了: 1件のファイルを処理しました
 [INFO] Javadocタグ設定ツール終了
 ```
