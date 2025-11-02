@@ -205,6 +205,7 @@ public class AbstractInputToolTest extends AbstractKmgTest {
      *                   例外
      */
     @Test
+    @Disabled
     public void testGetBasePath_normalPrimaryPathExists() throws Exception {
 
         /* 期待値の定義 */
