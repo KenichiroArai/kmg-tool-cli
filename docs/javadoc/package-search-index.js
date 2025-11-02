@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"kmg.tool.cli.cmn.presentation.ui.cli"},{"l":"kmg.tool.cli.dtc.presentation.ui.cli"},{"l":"すべてのパッケージ","u":"allpackages-index.html"}];updateSearchResults();
