@@ -32,7 +32,7 @@ import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 public class MessageTypesCreationTool extends AbstractDtcTool {
 
     /**
-     * <h3>ツール名</h3>
+     * ツール名
      * <p>
      * このツールの表示名を定義します。
      * </p>
@@ -42,7 +42,7 @@ public class MessageTypesCreationTool extends AbstractDtcTool {
     private static final String TOOL_NAME = "メッセージの種類作成ツール"; //$NON-NLS-1$
 
     /**
-     * <h3>メッセージの種類作成サービス</h3>
+     * メッセージの種類作成サービス
      * <p>
      * メッセージ種類の定義を生成するためのサービスです。
      * </p>
@@ -53,7 +53,7 @@ public class MessageTypesCreationTool extends AbstractDtcTool {
     private MessageTypesCreationService messageTypesCreationService;
 
     /**
-     * <h3>エントリポイント</h3>
+     * エントリポイント
      * <p>
      * アプリケーションの起動とツールの実行を行います。
      * </p>
@@ -98,7 +98,7 @@ public class MessageTypesCreationTool extends AbstractDtcTool {
     }
 
     /**
-     * <h3>コンストラクタ</h3>
+     * コンストラクタ
      * <p>
      * メッセージの種類作成ツールのインスタンスを生成します。
      * </p>
@@ -115,7 +115,7 @@ public class MessageTypesCreationTool extends AbstractDtcTool {
     }
 
     /**
-     * <h3>メッセージの種類作成サービスを返す</h3>
+     * メッセージの種類作成サービスを返す
      * <p>
      * AbstractDynamicTemplateConversionToolの抽象メソッドを実装し、DI（依存性注入）された メッセージの種類作成サービスのインスタンスを返します。
      * </p>

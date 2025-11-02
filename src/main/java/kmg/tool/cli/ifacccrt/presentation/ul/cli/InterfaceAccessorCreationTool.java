@@ -32,7 +32,7 @@ import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 public class InterfaceAccessorCreationTool extends AbstractDtcTool {
 
     /**
-     * <h3>ツール名</h3>
+     * ツール名
      * <p>
      * このツールの表示名を定義します。
      * </p>
@@ -42,7 +42,7 @@ public class InterfaceAccessorCreationTool extends AbstractDtcTool {
     private static final String TOOL_NAME = "インタフェースのアクセサ作成ツール"; //$NON-NLS-1$
 
     /**
-     * <h3>アクセサ作成サービス</h3>
+     * アクセサ作成サービス
      * <p>
      * フィールド定義からアクセサメソッドを生成するためのサービスです。
      * </p>
@@ -53,7 +53,7 @@ public class InterfaceAccessorCreationTool extends AbstractDtcTool {
     private AccessorCreationService accessorCreationService;
 
     /**
-     * <h3>エントリポイント</h3>
+     * エントリポイント
      * <p>
      * アプリケーションの起動とツールの実行を行います。
      * </p>
@@ -98,7 +98,7 @@ public class InterfaceAccessorCreationTool extends AbstractDtcTool {
     }
 
     /**
-     * <h3>コンストラクタ</h3>
+     * コンストラクタ
      * <p>
      * インタフェースのアクセサ作成ツールのインスタンスを生成します。
      * </p>
@@ -115,7 +115,7 @@ public class InterfaceAccessorCreationTool extends AbstractDtcTool {
     }
 
     /**
-     * <h3>アクセサ作成サービスを返す</h3>
+     * アクセサ作成サービスを返す
      * <p>
      * AbstractTwo2OneToolの抽象メソッドを実装し、DI（依存性注入）された アクセサ作成サービスのインスタンスを返します。
      * </p>

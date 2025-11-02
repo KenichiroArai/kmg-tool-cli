@@ -18,7 +18,7 @@ import kmg.tool.cli.cmn.presentation.ui.cli.AbstractTool;
  * <p>
  * このクラスを継承することで、カスタム入力処理ツールを実装できます。 継承クラスでは{@link #getInputService()}メソッドを実装する必要があります。
  * </p>
- * <h3>使用例：</h3>
+ * <h2>使用例：</h2>
  *
  * <pre>
  * // カスタム入力サービスの実装
@@ -170,6 +170,14 @@ public abstract class AbstractInputTool extends AbstractTool {
         final Path result = AbstractInputTool.SECONDARY_BASE_PATH;
         return result;
 
+    }
+
+    /**
+     * デフォルトコンストラクタ
+     */
+    protected AbstractInputTool() {
+
+        // 処理なし
     }
 
     /**

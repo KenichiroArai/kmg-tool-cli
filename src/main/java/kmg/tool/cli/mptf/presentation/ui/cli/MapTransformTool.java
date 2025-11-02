@@ -37,7 +37,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
 public class MapTransformTool extends AbstractPlainContentInputTool {
 
     /**
-     * <h3>ツール名</h3>
+     * ツール名
      * <p>
      * このツールの表示名を定義します。
      * </p>

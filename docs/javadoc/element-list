@@ -1,0 +1,15 @@
+kmg.tool.cli.acccrt.presentation.ul.cli
+kmg.tool.cli.cmn.presentation.ui.cli
+kmg.tool.cli.dtc.presentation.ui.cli
+kmg.tool.cli.e2scc.presentation.ui.cli
+kmg.tool.cli.fldcrt.presentation.ui.cli
+kmg.tool.cli.ifacccrt.presentation.ul.cli
+kmg.tool.cli.input.presentation.ui.cli
+kmg.tool.cli.io.presentation.ui.cli
+kmg.tool.cli.jdocr.presentation.ui.cli
+kmg.tool.cli.jdts.presentation.ui.cli
+kmg.tool.cli.mptf.presentation.ui.cli
+kmg.tool.cli.msgtpcrt.presentation.ul.cli
+kmg.tool.cli.one2one.presentation.ui.cli
+kmg.tool.cli.simple.presentation.ui.cli
+kmg.tool.cli.two2one.presentation.ui.cli

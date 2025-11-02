@@ -12,6 +12,14 @@ package kmg.tool.cli.cmn.presentation.ui.cli;
 public abstract class AbstractTool {
 
     /**
+     * デフォルトコンストラクタ
+     */
+    protected AbstractTool() {
+
+        // 処理なし
+    }
+
+    /**
      * 実行する
      *
      * @since 0.1.0

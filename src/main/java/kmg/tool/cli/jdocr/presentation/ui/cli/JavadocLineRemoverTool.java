@@ -31,7 +31,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 public class JavadocLineRemoverTool extends AbstractInputTool {
 
     /**
-     * <h3>ツール名</h3>
+     * ツール名
      * <p>
      * このツールの表示名を定義します。
      * </p>
@@ -84,6 +84,14 @@ public class JavadocLineRemoverTool extends AbstractInputTool {
 
         ctx.close();
 
+    }
+
+    /**
+     * デフォルトコンストラクタ
+     */
+    public JavadocLineRemoverTool() {
+
+        // 処理なし
     }
 
     /**

@@ -24,6 +24,14 @@ public abstract class AbstractPlainContentInputTool extends AbstractInputTool {
     private String content;
 
     /**
+     * デフォルトコンストラクタ
+     */
+    protected AbstractPlainContentInputTool() {
+
+        // 処理なし
+    }
+
+    /**
      * 内容を返す。
      *
      * @since 0.1.0

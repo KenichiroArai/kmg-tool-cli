@@ -51,7 +51,7 @@ public class JavadocTagSetterTool extends AbstractPlainContentInputTool {
     private static final String DEFINITION_FILE_PATH_FORMAT = "template/%s.yml"; //$NON-NLS-1$
 
     /**
-     * <h3>ツール名</h3>
+     * ツール名
      * <p>
      * このツールの表示名を定義します。
      * </p>
@@ -268,7 +268,7 @@ public class JavadocTagSetterTool extends AbstractPlainContentInputTool {
     }
 
     /**
-     * <h3>ツール実行メソッド</h3>
+     * ツール実行メソッド
      * <p>
      * ツールの初期化と実行を行います。
      * </p>

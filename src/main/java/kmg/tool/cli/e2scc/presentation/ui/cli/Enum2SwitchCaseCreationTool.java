@@ -32,7 +32,7 @@ import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
 public class Enum2SwitchCaseCreationTool extends AbstractDtcTool {
 
     /**
-     * <h3>ツール名</h3>
+     * ツール名
      * <p>
      * このツールの表示名を定義します。
      * </p>
@@ -42,7 +42,7 @@ public class Enum2SwitchCaseCreationTool extends AbstractDtcTool {
     private static final String TOOL_NAME = "列挙型からcase文作成ツール"; //$NON-NLS-1$
 
     /**
-     * <h3>列挙型からcase文作成サービス</h3>
+     * 列挙型からcase文作成サービス
      * <p>
      * 列挙型定義からswitch-case文を生成するためのサービスです。
      * </p>
@@ -53,7 +53,7 @@ public class Enum2SwitchCaseCreationTool extends AbstractDtcTool {
     private Enum2SwitchCaseCreationService enum2SwitchCaseMakingService;
 
     /**
-     * <h3>エントリポイント</h3>
+     * エントリポイント
      * <p>
      * アプリケーションの起動とツールの実行を行います。
      * </p>
@@ -98,7 +98,7 @@ public class Enum2SwitchCaseCreationTool extends AbstractDtcTool {
     }
 
     /**
-     * <h3>コンストラクタ</h3>
+     * コンストラクタ
      * <p>
      * 列挙型からcase文作成ツールのインスタンスを生成します。
      * </p>
@@ -115,7 +115,7 @@ public class Enum2SwitchCaseCreationTool extends AbstractDtcTool {
     }
 
     /**
-     * <h3>列挙型からcase文作成サービスを返す</h3>
+     * 列挙型からcase文作成サービスを返す
      * <p>
      * AbstractDynamicTemplateConversionToolの抽象メソッドを実装し、DI（依存性注入）された 列挙型からcase文作成サービスのインスタンスを返します。
      * </p>
