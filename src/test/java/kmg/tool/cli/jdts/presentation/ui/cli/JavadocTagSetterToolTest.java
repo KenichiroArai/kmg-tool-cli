@@ -33,9 +33,9 @@ import kmg.core.infrastructure.model.val.impl.KmgValsModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
+import kmg.fund.infrastructure.exception.KmgFundMsgException;
+import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
 import kmg.tool.base.jdts.application.service.JdtsService;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
@@ -47,7 +47,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -438,8 +438,8 @@ public class JavadocTagSetterToolTest extends AbstractKmgTest {
                 .thenReturn("テスト用の例外メッセージ");
 
             // 例外を事前に作成
-            final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN13001, new Object[] {});
+            final KmgFundMsgException testException
+                = new KmgFundMsgException(KmgFundGenMsgTypes.KMGFUND_GEN13001, new Object[] {});
             Mockito.when(this.mockJdtsService.process()).thenThrow(testException);
             Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
                 .thenReturn("テストメッセージ");

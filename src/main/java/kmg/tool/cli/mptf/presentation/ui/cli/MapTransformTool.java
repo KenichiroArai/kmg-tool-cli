@@ -14,6 +14,7 @@ import kmg.core.domain.service.KmgPfaMeasService;
 import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.core.infrastructure.types.KmgDelimiterTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
+import kmg.fund.infrastructure.exception.KmgFundMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
@@ -29,7 +30,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @SpringBootApplication(scanBasePackages = {
     "kmg"
@@ -167,6 +168,17 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
 
             /* 例外 */
             final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN19002;
+            final Object[]           messageArgs = {};
+            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            measService.error(msg, e);
+
+            result = false;
+
+        } catch (final KmgFundMsgException e) {
+
+            /* 例外 */
+            // TODO KenichiroArai 2025/12/30 メッセージ未設定
+            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.NONE;
             final Object[]           messageArgs = {};
             final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
