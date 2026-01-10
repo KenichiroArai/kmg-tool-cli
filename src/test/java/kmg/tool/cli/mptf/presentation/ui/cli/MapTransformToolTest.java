@@ -45,7 +45,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -183,7 +183,7 @@ public class MapTransformToolTest extends AbstractKmgTest {
 
             // KmgToolMsgExceptionを作成（モックのスコープ内で）
             final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN19002, new Object[] {});
+                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN19004, new Object[] {});
             Mockito.when(localTestTarget.getInputService().getContent()).thenThrow(testException);
 
             /* テスト対象の実行 */
@@ -233,11 +233,11 @@ public class MapTransformToolTest extends AbstractKmgTest {
 
             // モックメッセージソースの設定
             Mockito.when(localMockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn("[KMGTOOL_GEN19002] テストメッセージ");
+                .thenReturn("[KMGTOOL_GEN19004] テストメッセージ");
 
             // KmgToolMsgExceptionを作成（モックのスコープ内で）
             final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN19002, new Object[] {});
+                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN19004, new Object[] {});
             Mockito.when(this.mockMapTransformService.process()).thenThrow(testException);
             Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
                 .thenReturn("テストメッセージ");

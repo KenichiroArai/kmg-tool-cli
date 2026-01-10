@@ -17,9 +17,9 @@ import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
 import kmg.tool.base.mptf.application.service.MapTransformService;
+import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
 
@@ -145,9 +145,9 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
             if (!result) {
 
                 /* メッセージの出力 */
-                final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN19000;
-                final Object[]           messageArgs = {};
-                final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+                final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19000;
+                final Object[]              messageArgs = {};
+                final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
                 measService.warn(msg);
 
                 return result;
@@ -159,17 +159,17 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
             result &= this.mapTransformService.process();
 
             /* 成功 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN19001;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19001;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.info(msg);
 
         } catch (final KmgToolMsgException e) {
 
             /* 例外 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN19002;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19002;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             result = false;
@@ -178,9 +178,9 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
 
             /* 例外 */
             // TODO KenichiroArai 2025/12/30 メッセージ未設定
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.NONE;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.NONE;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             result = false;
@@ -188,9 +188,9 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
         } catch (final KmgToolValException e) {
 
             /* 例外 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN19003;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19003;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             // バリデーションエラーを全てログに出力する

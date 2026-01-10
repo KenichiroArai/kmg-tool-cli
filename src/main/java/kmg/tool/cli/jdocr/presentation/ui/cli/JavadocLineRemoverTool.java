@@ -11,9 +11,9 @@ import kmg.core.domain.service.KmgPfaMeasService;
 import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
+import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 
 /**
@@ -23,7 +23,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @SpringBootApplication(scanBasePackages = {
     "kmg"
@@ -123,9 +123,9 @@ public class JavadocLineRemoverTool extends AbstractInputTool {
             if (!result) {
 
                 /* メッセージの出力 */
-                final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN12003;
-                final Object[]           messageArgs = {};
-                final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+                final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN12000;
+                final Object[]              messageArgs = {};
+                final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
                 measService.warn(msg);
 
                 return result;
@@ -136,17 +136,17 @@ public class JavadocLineRemoverTool extends AbstractInputTool {
             result &= this.javadocLineRemoverService.process();
 
             /* 成功 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN12004;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN12001;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.info(msg);
 
         } catch (final KmgToolMsgException e) {
 
             /* 例外 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN12005;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN12002;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             result = false;
