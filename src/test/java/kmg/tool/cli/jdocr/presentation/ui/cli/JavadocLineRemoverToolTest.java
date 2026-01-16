@@ -27,6 +27,7 @@ import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
+import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 
 /**
@@ -36,7 +37,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -186,7 +187,7 @@ public class JavadocLineRemoverToolTest extends AbstractKmgTest {
         Mockito.when(mockService.process()).thenReturn(false);
 
         final KmgMessageSource localMockMessageSource = Mockito.mock(KmgMessageSource.class);
-        Mockito.when(localMockMessageSource.getGenMessage(ArgumentMatchers.any(KmgToolGenMsgTypes.class),
+        Mockito.when(localMockMessageSource.getGenMessage(ArgumentMatchers.any(KmgToolCliGenMsgTypes.class),
             ArgumentMatchers.any(Object[].class))).thenReturn("テストメッセージ");
 
         localReflectionModel.set("inputService", mockInputService);
@@ -230,7 +231,7 @@ public class JavadocLineRemoverToolTest extends AbstractKmgTest {
         Mockito.when(mockService.process()).thenReturn(true);
 
         final KmgMessageSource localMockMessageSource = Mockito.mock(KmgMessageSource.class);
-        Mockito.when(localMockMessageSource.getGenMessage(ArgumentMatchers.any(KmgToolGenMsgTypes.class),
+        Mockito.when(localMockMessageSource.getGenMessage(ArgumentMatchers.any(KmgToolCliGenMsgTypes.class),
             ArgumentMatchers.any(Object[].class))).thenReturn("テストメッセージ");
 
         localReflectionModel.set("inputService", mockInputService);
@@ -273,7 +274,7 @@ public class JavadocLineRemoverToolTest extends AbstractKmgTest {
         Mockito.when(mockService.initialize(ArgumentMatchers.any(Path.class))).thenReturn(false);
 
         final KmgMessageSource localMockMessageSource = Mockito.mock(KmgMessageSource.class);
-        Mockito.when(localMockMessageSource.getGenMessage(ArgumentMatchers.any(KmgToolGenMsgTypes.class),
+        Mockito.when(localMockMessageSource.getGenMessage(ArgumentMatchers.any(KmgToolCliGenMsgTypes.class),
             ArgumentMatchers.any(Object[].class))).thenReturn("テストメッセージ");
 
         localReflectionModel.set("inputService", mockInputService);

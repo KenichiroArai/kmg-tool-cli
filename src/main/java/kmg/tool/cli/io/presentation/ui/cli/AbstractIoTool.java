@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import kmg.core.domain.service.KmgPfaMeasService;
 import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.fund.infrastructure.context.KmgMessageSource;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.io.domain.service.IoService;
+import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
 import kmg.tool.cli.cmn.presentation.ui.cli.AbstractTool;
 
 /**
@@ -50,7 +50,7 @@ import kmg.tool.cli.cmn.presentation.ui.cli.AbstractTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 public abstract class AbstractIoTool extends AbstractTool {
 
@@ -246,9 +246,9 @@ public abstract class AbstractIoTool extends AbstractTool {
             if (!processResult) {
 
                 /* メッセージの出力 */
-                final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN09000;
-                final Object[]           messageArgs = {};
-                final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+                final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN09000;
+                final Object[]              messageArgs = {};
+                final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
                 measService.warn(msg);
 
                 return result;
@@ -257,9 +257,9 @@ public abstract class AbstractIoTool extends AbstractTool {
 
             /* 成功 */
             // メッセージの出力
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN09001;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN09001;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.info(msg);
 
             result = true;
@@ -268,9 +268,9 @@ public abstract class AbstractIoTool extends AbstractTool {
 
             /* 失敗 */
             // メッセージの出力
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN09002;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN09002;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
         } finally {
