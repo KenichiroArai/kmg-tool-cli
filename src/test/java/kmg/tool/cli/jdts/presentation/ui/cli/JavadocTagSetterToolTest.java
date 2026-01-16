@@ -33,6 +33,8 @@ import kmg.core.infrastructure.model.val.impl.KmgValsModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
+import kmg.fund.infrastructure.exception.KmgFundMsgException;
+import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
 import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
@@ -47,7 +49,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -402,15 +404,15 @@ public class JavadocTagSetterToolTest extends AbstractKmgTest {
     }
 
     /**
-     * execute メソッドのテスト - 異常系：KmgToolMsgExceptionが発生する場合
+     * execute メソッドのテスト - 異常系：KmgFundMsgExceptionが発生する場合
      *
-     * @since 0.1.0
+     * @since 0.1.1
      *
      * @throws Exception
      *                   例外
      */
     @Test
-    public void testExecute_errorKmgToolMsgException() throws Exception {
+    public void testExecute_errorKmgFundMsgException() throws Exception {
 
         /* 期待値の定義 */
 
@@ -438,9 +440,60 @@ public class JavadocTagSetterToolTest extends AbstractKmgTest {
                 .thenReturn("テスト用の例外メッセージ");
 
             // 例外を事前に作成
-            final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN13001, new Object[] {});
+            final KmgFundMsgException testException
+                = new KmgFundMsgException(KmgFundGenMsgTypes.KMGFUND_GEN13001, new Object[] {});
             Mockito.when(this.mockJdtsService.process()).thenThrow(testException);
+            Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
+                .thenReturn("テストメッセージ");
+
+            /* テスト対象の実行 */
+            final boolean actualResult = localTestTarget.execute();
+
+            /* 検証の準備 */
+
+            /* 検証の実施 */
+            Assertions.assertFalse(actualResult, "KmgFundMsgExceptionが発生した場合、falseが返されること");
+
+        }
+
+    }
+
+    /**
+     * execute メソッドのテスト - 異常系：KmgToolMsgExceptionが発生する場合
+     *
+     * @since 0.1.0
+     *
+     * @throws Exception
+     *                   例外
+     */
+    @Test
+    public void testExecute_errorKmgToolMsgException() throws Exception {
+
+        /* 期待値の定義 */
+
+        /* 準備 */
+        final JavadocTagSetterTool   localTestTarget      = new JavadocTagSetterTool();
+        final KmgReflectionModelImpl localReflectionModel = new KmgReflectionModelImpl(localTestTarget);
+        localReflectionModel.set("messageSource", this.mockMessageSource);
+        localReflectionModel.set("inputService", this.mockInputService);
+        localReflectionModel.set("jdtsService", this.mockJdtsService);
+        Mockito.when(this.mockInputService.initialize(ArgumentMatchers.any())).thenReturn(true);
+
+        // SpringApplicationContextHelperのモック化
+        try (final MockedStatic<SpringApplicationContextHelper> mockedStatic
+            = Mockito.mockStatic(SpringApplicationContextHelper.class)) {
+
+            final KmgMessageSource mockMessageSourceForException = Mockito.mock(KmgMessageSource.class);
+            mockedStatic.when(() -> SpringApplicationContextHelper.getBean(KmgMessageSource.class))
+                .thenReturn(mockMessageSourceForException);
+
+            // モックメッセージソースの設定
+            Mockito.when(mockMessageSourceForException.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
+                .thenReturn("テスト用の例外メッセージ");
+
+            // 例外を事前に作成
+            final KmgToolMsgException testException = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN01001);
+            Mockito.when(this.mockInputService.process()).thenThrow(testException);
             Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
                 .thenReturn("テストメッセージ");
 

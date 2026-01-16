@@ -3,6 +3,7 @@ package kmg.tool.cli.acccrt.presentation.ul.cli;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import kmg.tool.base.acccrt.application.service.AccessorCreationService;
@@ -27,10 +28,12 @@ import kmg.tool.cli.dtc.presentation.ui.cli.AbstractDtcTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @SpringBootApplication(scanBasePackages = {
-    "kmg"
+    "kmg",
+}, exclude = {
+    DataSourceAutoConfiguration.class
 })
 public class AccessorCreationTool extends AbstractDtcTool {
 

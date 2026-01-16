@@ -1,4 +1,6 @@
 kmg.tool.cli.acccrt.presentation.ul.cli
+kmg.tool.cli.cmn.infrastructure.msg
+kmg.tool.cli.cmn.infrastructure.types
 kmg.tool.cli.cmn.presentation.ui.cli
 kmg.tool.cli.dtc.presentation.ui.cli
 kmg.tool.cli.e2scc.presentation.ui.cli

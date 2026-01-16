@@ -22,7 +22,7 @@ import kmg.tool.base.input.domain.service.InputService;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @SuppressWarnings({
     "nls", "static-method"
@@ -205,23 +205,38 @@ public class AbstractInputToolTest extends AbstractKmgTest {
      *                   例外
      */
     @Test
-    @Disabled
     public void testGetBasePath_normalPrimaryPathExists() throws Exception {
 
         /* 期待値の定義 */
         final Path expected = Paths.get("work/io");
 
         /* 準備 */
-        // 実際のディレクトリを作成
-        final Path workIoDir = this.tempDir.resolve("work/io");
-        Files.createDirectories(workIoDir);
-
-        // 一時的にカレントディレクトリを変更
-        final Path originalDir = Paths.get("").toAbsolutePath();
+        // work/ioディレクトリが存在しない場合は作成し、存在する場合はそのまま使用
+        final Path    workIoDir       = Paths.get("work/io");
+        final boolean workIoDirExists = Files.exists(workIoDir);
+        final Path    workDir         = Paths.get("work");
+        final Path    workBackupDir   = Paths.get("work_backup");
+        final boolean workDirExists   = Files.exists(workDir);
+        boolean       workDirCreated  = false;
+        boolean       workDirRenamed  = false;
 
         try {
 
-            System.setProperty("user.dir", this.tempDir.toString());
+            if (!workDirExists) {
+
+                // workディレクトリが存在しない場合は作成
+                Files.createDirectories(workIoDir);
+                workDirCreated = true;
+
+            } else if (!workIoDirExists) {
+
+                // workディレクトリは存在するがwork/ioが存在しない場合
+                // workディレクトリを一時的に名前変更してから作成
+                Files.move(workDir, workBackupDir);
+                workDirRenamed = true;
+                Files.createDirectories(workIoDir);
+
+            }
 
             /* テスト対象の実行 */
             final Path testResult = AbstractInputTool.getBasePath();
@@ -234,7 +249,46 @@ public class AbstractInputToolTest extends AbstractKmgTest {
 
         } finally {
 
-            System.setProperty("user.dir", originalDir.toString());
+            if (workDirCreated) {
+
+                // 作成したディレクトリを削除
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+
+            } else if (workDirRenamed) {
+
+                // 名前を変更したディレクトリを元に戻す
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+                Files.move(workBackupDir, workDir);
+
+            }
 
         }
 

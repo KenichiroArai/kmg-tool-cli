@@ -98,7 +98,8 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="annotations">@SpringBootApplication(scanBasePackages="kmg")
+<div class="type-signature"><span class="annotations">@SpringBootApplication(scanBasePackages="kmg",
+                       exclude=org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration.class)
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">AccessorCreationTool</span>
 <span class="extends-implements">extends <a href="../../../../dtc/presentation/ui/cli/AbstractDtcTool.html" title="kmg.tool.cli.dtc.presentation.ui.cli内のクラス">AbstractDtcTool</a></span></div>
 <div class="block"><h2 id="--heading">アクセサ作成ツール</h2>
@@ -118,7 +119,7 @@ loadScripts(document, 'script');</script>
 <dt>導入されたバージョン:</dt>
 <dd>0.1.0</dd>
 <dt>バージョン:</dt>
-<dd>0.1.0</dd>
+<dd>0.1.1</dd>
 <dt>作成者:</dt>
 <dd>KenichiroArai</dd>
 </dl>

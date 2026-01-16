@@ -14,11 +14,12 @@ import kmg.core.domain.service.KmgPfaMeasService;
 import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.core.infrastructure.utils.KmgPathUtils;
 import kmg.fund.infrastructure.context.KmgMessageSource;
+import kmg.fund.infrastructure.exception.KmgFundMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
 import kmg.tool.base.jdts.application.service.JdtsService;
+import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
 
@@ -29,7 +30,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @SpringBootApplication(scanBasePackages = {
     "kmg"
@@ -173,9 +174,9 @@ public class JavadocTagSetterTool extends AbstractPlainContentInputTool {
             if (!result) {
 
                 /* メッセージの出力 */
-                final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN13004;
-                final Object[]           messageArgs = {};
-                final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+                final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN13000;
+                final Object[]              messageArgs = {};
+                final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
                 measService.warn(msg);
 
                 return result;
@@ -187,17 +188,28 @@ public class JavadocTagSetterTool extends AbstractPlainContentInputTool {
             result &= this.jdtsService.process();
 
             /* 成功 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN13005;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN13001;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.info(msg);
 
         } catch (final KmgToolMsgException e) {
 
             /* 例外 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN13006;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN13002;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            measService.error(msg, e);
+
+            result = false;
+
+        } catch (final KmgFundMsgException e) {
+
+            /* 例外 */
+            // TODO KenichiroArai 2025/12/30 メッセージ未設定
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.NONE;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             result = false;
@@ -205,9 +217,9 @@ public class JavadocTagSetterTool extends AbstractPlainContentInputTool {
         } catch (final KmgToolValException e) {
 
             /* 例外 */
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN13007;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN13003;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             // バリデーションエラーを全てログに出力する
@@ -219,9 +231,9 @@ public class JavadocTagSetterTool extends AbstractPlainContentInputTool {
 
             /* 例外 */
 
-            final KmgToolGenMsgTypes msgType     = KmgToolGenMsgTypes.KMGTOOL_GEN13008;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getGenMessage(msgType, messageArgs);
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN13004;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
 
             result = false;

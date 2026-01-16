@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.mockito.ArgumentMatchers;
@@ -24,7 +23,7 @@ import kmg.tool.base.io.domain.service.IoService;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 @SuppressWarnings({
     "nls", "static-method"
@@ -339,23 +338,38 @@ public class AbstractIoToolTest extends AbstractKmgTest {
      *                   例外
      */
     @Test
-    @Disabled
     public void testGetBasePath_normalPrimaryPathExists() throws Exception {
 
         /* 期待値の定義 */
         final Path expected = Paths.get("work/io");
 
         /* 準備 */
-        // 実際のディレクトリを作成
-        final Path workIoDir = this.tempDir.resolve("work/io");
-        Files.createDirectories(workIoDir);
-
-        // 一時的にカレントディレクトリを変更
-        final Path originalDir = Paths.get("").toAbsolutePath();
+        // work/ioディレクトリが存在しない場合は作成し、存在する場合はそのまま使用
+        final Path    workIoDir       = Paths.get("work/io");
+        final boolean workIoDirExists = Files.exists(workIoDir);
+        final Path    workDir         = Paths.get("work");
+        final Path    workBackupDir   = Paths.get("work_backup");
+        final boolean workDirExists   = Files.exists(workDir);
+        boolean       workDirCreated  = false;
+        boolean       workDirRenamed  = false;
 
         try {
 
-            System.setProperty("user.dir", this.tempDir.toString());
+            if (!workDirExists) {
+
+                // workディレクトリが存在しない場合は作成
+                Files.createDirectories(workIoDir);
+                workDirCreated = true;
+
+            } else if (!workIoDirExists) {
+
+                // workディレクトリは存在するがwork/ioが存在しない場合
+                // workディレクトリを一時的に名前変更してから作成
+                Files.move(workDir, workBackupDir);
+                workDirRenamed = true;
+                Files.createDirectories(workIoDir);
+
+            }
 
             /* テスト対象の実行 */
             final Path testResult = AbstractIoTool.getBasePath();
@@ -368,7 +382,46 @@ public class AbstractIoToolTest extends AbstractKmgTest {
 
         } finally {
 
-            System.setProperty("user.dir", originalDir.toString());
+            if (workDirCreated) {
+
+                // 作成したディレクトリを削除
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+
+            } else if (workDirRenamed) {
+
+                // 名前を変更したディレクトリを元に戻す
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+                Files.move(workBackupDir, workDir);
+
+            }
 
         }
 
@@ -436,25 +489,48 @@ public class AbstractIoToolTest extends AbstractKmgTest {
      *                   例外
      */
     @Test
-    @Disabled
     public void testGetInputPath_normalPrimaryInputFileExists() throws Exception {
 
         /* 期待値の定義 */
         final Path expected = Paths.get("work/io/input.txt");
 
         /* 準備 */
-        // 実際のディレクトリとファイルを作成
-        final Path workIoDir = this.tempDir.resolve("work/io");
-        Files.createDirectories(workIoDir);
-        final Path inputFile = workIoDir.resolve("input.txt");
-        Files.createFile(inputFile);
-
-        // 一時的にカレントディレクトリを変更
-        final Path originalDir = Paths.get("").toAbsolutePath();
+        // work/ioディレクトリとinput.txtファイルが存在しない場合は作成し、存在する場合はそのまま使用
+        final Path    workIoDir       = Paths.get("work/io");
+        final Path    inputFile       = Paths.get("work/io/input.txt");
+        final boolean inputFileExists = Files.exists(inputFile);
+        final boolean workIoDirExists = Files.exists(workIoDir);
+        final Path    workDir         = Paths.get("work");
+        final Path    workBackupDir   = Paths.get("work_backup");
+        final boolean workDirExists   = Files.exists(workDir);
+        boolean       workDirCreated  = false;
+        boolean       workDirRenamed  = false;
 
         try {
 
-            System.setProperty("user.dir", this.tempDir.toString());
+            if (!workDirExists) {
+
+                // workディレクトリが存在しない場合は作成
+                Files.createDirectories(workIoDir);
+                Files.createFile(inputFile);
+                workDirCreated = true;
+
+            } else if (!workIoDirExists) {
+
+                // workディレクトリは存在するがwork/ioが存在しない場合
+                // workディレクトリを一時的に名前変更してから作成
+                Files.move(workDir, workBackupDir);
+                workDirRenamed = true;
+                Files.createDirectories(workIoDir);
+                Files.createFile(inputFile);
+
+            } else if (!inputFileExists) {
+
+                // work/ioディレクトリは存在するがinput.txtが存在しない場合
+                Files.createFile(inputFile);
+                workDirCreated = true;
+
+            }
 
             /* テスト対象の実行 */
             final Path testResult = AbstractIoTool.getInputPath();
@@ -467,7 +543,48 @@ public class AbstractIoToolTest extends AbstractKmgTest {
 
         } finally {
 
-            System.setProperty("user.dir", originalDir.toString());
+            if (workDirCreated) {
+
+                // 作成したファイルとディレクトリを削除
+                Files.deleteIfExists(inputFile);
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+
+            } else if (workDirRenamed) {
+
+                // 名前を変更したディレクトリを元に戻す
+                Files.deleteIfExists(inputFile);
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+                Files.move(workBackupDir, workDir);
+
+            }
 
         }
 
@@ -588,25 +705,48 @@ public class AbstractIoToolTest extends AbstractKmgTest {
      *                   例外
      */
     @Test
-    @Disabled
     public void testGetOutputPath_normalPrimaryOutputFileExists() throws Exception {
 
         /* 期待値の定義 */
         final Path expected = Paths.get("work/io/output.txt");
 
         /* 準備 */
-        // 実際のディレクトリとファイルを作成
-        final Path workIoDir = this.tempDir.resolve("work/io");
-        Files.createDirectories(workIoDir);
-        final Path outputFile = workIoDir.resolve("output.txt");
-        Files.createFile(outputFile);
-
-        // 一時的にカレントディレクトリを変更
-        final Path originalDir = Paths.get("").toAbsolutePath();
+        // work/ioディレクトリとoutput.txtファイルが存在しない場合は作成し、存在する場合はそのまま使用
+        final Path    workIoDir        = Paths.get("work/io");
+        final Path    outputFile       = Paths.get("work/io/output.txt");
+        final boolean outputFileExists = Files.exists(outputFile);
+        final boolean workIoDirExists  = Files.exists(workIoDir);
+        final Path    workDir          = Paths.get("work");
+        final Path    workBackupDir    = Paths.get("work_backup");
+        final boolean workDirExists    = Files.exists(workDir);
+        boolean       workDirCreated   = false;
+        boolean       workDirRenamed   = false;
 
         try {
 
-            System.setProperty("user.dir", this.tempDir.toString());
+            if (!workDirExists) {
+
+                // workディレクトリが存在しない場合は作成
+                Files.createDirectories(workIoDir);
+                Files.createFile(outputFile);
+                workDirCreated = true;
+
+            } else if (!workIoDirExists) {
+
+                // workディレクトリは存在するがwork/ioが存在しない場合
+                // workディレクトリを一時的に名前変更してから作成
+                Files.move(workDir, workBackupDir);
+                workDirRenamed = true;
+                Files.createDirectories(workIoDir);
+                Files.createFile(outputFile);
+
+            } else if (!outputFileExists) {
+
+                // work/ioディレクトリは存在するがoutput.txtが存在しない場合
+                Files.createFile(outputFile);
+                workDirCreated = true;
+
+            }
 
             /* テスト対象の実行 */
             final Path testResult = AbstractIoTool.getOutputPath();
@@ -619,7 +759,48 @@ public class AbstractIoToolTest extends AbstractKmgTest {
 
         } finally {
 
-            System.setProperty("user.dir", originalDir.toString());
+            if (workDirCreated) {
+
+                // 作成したファイルとディレクトリを削除
+                Files.deleteIfExists(outputFile);
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+
+            } else if (workDirRenamed) {
+
+                // 名前を変更したディレクトリを元に戻す
+                Files.deleteIfExists(outputFile);
+                Files.deleteIfExists(workIoDir);
+
+                if (Files.exists(workDir)) {
+
+                    try (var stream = Files.list(workDir)) {
+
+                        if (stream.count() == 0) {
+
+                            Files.deleteIfExists(workDir);
+
+                        }
+
+                    }
+
+                }
+                Files.move(workBackupDir, workDir);
+
+            }
 
         }
 
