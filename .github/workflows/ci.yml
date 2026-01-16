@@ -7,8 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  packages: read
+  contents: write
   actions: write
   security-events: write
 
@@ -27,6 +26,7 @@ jobs:
           cache: maven
 
       - name: Configure Maven settings for GitHub Packages
+        # GitHub PackagesからKMGシリーズの依存関係を取得するためのMaven設定を構成
         run: |
           mkdir -p $HOME/.m2
           cat <<EOF > $HOME/.m2/settings.xml
@@ -51,19 +51,20 @@ jobs:
           </settings>
           EOF
 
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
-
       - name: Generate dependency graph
+        # 依存関係ツリーをGraphML形式で生成し、セキュリティ分析に使用
         run: |
           mkdir -p target
           export MAVEN_OPTS="-Xmx2g -XX:MaxMetaspaceSize=512m"
           mvn -B dependency:tree -DoutputType=graphml -DoutputFile=target/dependency-graph.graphml -Dverbose=false
 
-      - name: Run tests with JVM options
-        run: mvn test -Djdk.instrument.traceUsage=true -DargLine="-XX:+EnableDynamicAgentLoading"
+      - name: Build and test with Maven
+        # コンパイル、テスト実行、パッケージングを1回で実行（JaCoCoでカバレッジ計測も実施）
+        run: mvn -B package -Djdk.instrument.traceUsage=true -DargLine="-XX:+EnableDynamicAgentLoading"
+        continue-on-error: false
 
       - name: Check Test Coverage
+        # テストカバレッジが100%であることを確認（100%未満の場合は失敗）
         run: |
           COVERAGE=$(mvn jacoco:report | grep -A 1 "Total.*class" | grep "[0-9]\{1,3\}%" | grep -o "[0-9]\{1,3\}%" | cut -d'%' -f1)
           if [ "$COVERAGE" -lt 100 ]; then
@@ -74,19 +75,20 @@ jobs:
           fi
 
       - name: Upload coverage report
+        # JaCoCoで生成されたカバレッジレポートをアーティファクトとしてアップロード
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: target/site/jacoco/
 
       - name: Dependency Review
+        # 依存関係の脆弱性をスキャンし、高リスクの脆弱性がある場合は失敗
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
           deny-licenses: AGPL-1.0-or-later
 
       - name: Update dependency graph
+        # GitHub Advanced Securityに依存関係グラフを送信（セキュリティ分析に使用）
         uses: advanced-security/maven-dependency-submission-action@v1
-        with:
-          maven-settings-file: $HOME/.m2/settings.xml
         continue-on-error: true
