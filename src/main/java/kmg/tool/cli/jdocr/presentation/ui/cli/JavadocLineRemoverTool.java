@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import kmg.core.domain.service.KmgPfaMeasService;
 import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.fund.infrastructure.context.KmgMessageSource;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
 import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
@@ -23,7 +23,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.1
+ * @version 0.1.2
  */
 @SpringBootApplication(scanBasePackages = {
     "kmg"
@@ -141,7 +141,7 @@ public class JavadocLineRemoverTool extends AbstractInputTool {
             final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.info(msg);
 
-        } catch (final KmgToolMsgException e) {
+        } catch (final KmgToolBaseMsgException e) {
 
             /* 例外 */
             final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN12002;

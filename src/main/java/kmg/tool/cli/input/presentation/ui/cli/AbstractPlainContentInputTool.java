@@ -2,7 +2,7 @@ package kmg.tool.cli.input.presentation.ui.cli;
 
 import java.nio.file.Path;
 
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
 
 /**
@@ -12,7 +12,7 @@ import kmg.tool.base.input.domain.service.PlainContentInputServic;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.2
  */
 public abstract class AbstractPlainContentInputTool extends AbstractInputTool {
 
@@ -58,17 +58,17 @@ public abstract class AbstractPlainContentInputTool extends AbstractInputTool {
     /**
      * 入力ファイルからプレーンコンテンツを読み込む
      *
-     * @since 0.1.0
+     * @since 0.1.2
      *
      * @param inputPath
      *                  入力ファイルパス
      *
      * @return true：成功、false：失敗
      *
-     * @throws KmgToolMsgException
-     *                             KMGツールメッセージ例外
+     * @throws KmgToolBaseMsgException
+     *                                 KMGツールメッセージ例外
      */
-    public boolean loadPlainContent(final Path inputPath) throws KmgToolMsgException {
+    public boolean loadPlainContent(final Path inputPath) throws KmgToolBaseMsgException {
 
         boolean result = true;
 

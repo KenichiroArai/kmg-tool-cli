@@ -15,8 +15,8 @@ import kmg.core.domain.service.impl.KmgPfaMeasServiceImpl;
 import kmg.core.infrastructure.types.KmgDelimiterTypes;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseValException;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
 import kmg.tool.base.mptf.application.service.MapTransformService;
 import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
@@ -30,7 +30,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.1
+ * @version 0.1.2
  */
 @SpringBootApplication(scanBasePackages = {
     "kmg"
@@ -164,7 +164,7 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
             final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.info(msg);
 
-        } catch (final KmgToolMsgException e) {
+        } catch (final KmgToolBaseMsgException e) {
 
             /* 例外 */
             final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19002;
@@ -185,7 +185,7 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
 
             result = false;
 
-        } catch (final KmgToolValException e) {
+        } catch (final KmgToolBaseValException e) {
 
             /* 例外 */
             final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19003;
@@ -228,14 +228,14 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
     /**
      * 入力ファイルから設定する
      *
-     * @since 0.1.0
+     * @since 0.1.2
      *
      * @return true：成功、false：失敗
      *
-     * @throws KmgToolMsgException
-     *                             KMGツールメッセージ例外
+     * @throws KmgToolBaseMsgException
+     *                                 KMGツールメッセージ例外
      */
-    private boolean fromInputFile() throws KmgToolMsgException {
+    private boolean fromInputFile() throws KmgToolBaseMsgException {
 
         boolean result = true;
 

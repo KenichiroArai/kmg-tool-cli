@@ -15,9 +15,9 @@ import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolLogMsgTypes;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
+import kmg.tool.base.cmn.infrastructure.types.KmgToolBaseGenMsgTypes;
+import kmg.tool.base.cmn.infrastructure.types.KmgToolBaseLogMsgTypes;
 import kmg.tool.base.simple.application.service.SimpleTwo2OneService;
 
 /**
@@ -27,7 +27,7 @@ import kmg.tool.base.simple.application.service.SimpleTwo2OneService;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.2
  */
 @SuppressWarnings({
     "nls", "static-method"
@@ -301,8 +301,8 @@ public class SimpleTwo2OneToolTest extends AbstractKmgTest {
     public void testInitialize_errorKmgToolMsgException() throws Exception {
 
         /* 期待値の定義 */
-        final KmgToolGenMsgTypes expectedMessageTypes  = KmgToolGenMsgTypes.KMGTOOL_GEN01001;
-        final String             expectedDomainMessage = "項目名がnullです。";
+        final KmgToolBaseGenMsgTypes expectedMessageTypes  = KmgToolBaseGenMsgTypes.KMGTOOLBASE_GEN01001;
+        final String                 expectedDomainMessage = "項目名がnullです。";
 
         /* 準備 */
         // SpringApplicationContextHelperのモック化
@@ -314,7 +314,7 @@ public class SimpleTwo2OneToolTest extends AbstractKmgTest {
                 .thenReturn(this.mockMessageSource);
 
             // メッセージソースのメソッドのモック設定
-            Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolLogMsgTypes.class),
+            Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolBaseLogMsgTypes.class),
                 ArgumentMatchers.any())).thenReturn("例外発生");
             Mockito.when(this.mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
                 .thenReturn(expectedDomainMessage);
@@ -325,7 +325,7 @@ public class SimpleTwo2OneToolTest extends AbstractKmgTest {
             reflectionModel.set("simpleTwo2OneService", this.mockSimpleTwo2OneService);
 
             // 例外を事前に作成（モック設定完了後に作成）
-            final KmgToolMsgException exception = new KmgToolMsgException(expectedMessageTypes);
+            final KmgToolBaseMsgException exception = new KmgToolBaseMsgException(expectedMessageTypes);
 
             // モックの設定（事前に作成した例外を使用）
             Mockito.when(this.mockSimpleTwo2OneService.initialize(ArgumentMatchers.any(Path.class),
@@ -364,7 +364,7 @@ public class SimpleTwo2OneToolTest extends AbstractKmgTest {
         // モックの設定
         Mockito.when(this.mockSimpleTwo2OneService.initialize(ArgumentMatchers.any(Path.class),
             ArgumentMatchers.any(Path.class), ArgumentMatchers.any(Path.class))).thenReturn(true);
-        Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolLogMsgTypes.class),
+        Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolBaseLogMsgTypes.class),
             ArgumentMatchers.any())).thenReturn("成功");
 
         // リフレクションを使用してメッセージソースを設定
@@ -400,7 +400,7 @@ public class SimpleTwo2OneToolTest extends AbstractKmgTest {
         // モックの設定
         Mockito.when(this.mockSimpleTwo2OneService.initialize(ArgumentMatchers.any(Path.class),
             ArgumentMatchers.any(Path.class), ArgumentMatchers.any(Path.class))).thenReturn(false);
-        Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolLogMsgTypes.class),
+        Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolBaseLogMsgTypes.class),
             ArgumentMatchers.any())).thenReturn("失敗");
 
         // リフレクションを使用してメッセージソースを設定
