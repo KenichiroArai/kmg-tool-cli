@@ -23,8 +23,8 @@ import kmg.core.infrastructure.model.impl.KmgReflectionModelImpl;
 import kmg.core.infrastructure.test.AbstractKmgTest;
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
+import kmg.tool.base.cmn.infrastructure.types.KmgToolBaseGenMsgTypes;
 import kmg.tool.base.jdocr.service.JavadocLineRemoverService;
 import kmg.tool.base.simple.domain.service.SimpleInputService;
 import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliGenMsgTypes;
@@ -37,7 +37,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.1
+ * @version 0.1.2
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -137,11 +137,11 @@ public class JavadocLineRemoverToolTest extends AbstractKmgTest {
 
             // モックメッセージソースの設定
             Mockito.when(localMockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn("[KMGTOOL_GEN01001] テストメッセージ");
+                .thenReturn("[KMGTOOLBASE_GEN01001] テストメッセージ");
 
             // KmgToolMsgExceptionを作成（モックのスコープ内で）
-            final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN01001, new Object[] {});
+            final KmgToolBaseMsgException testException
+                = new KmgToolBaseMsgException(KmgToolBaseGenMsgTypes.KMGTOOLBASE_GEN01001, new Object[] {});
             Mockito.when(mockService.process()).thenThrow(testException);
 
             localReflectionModel.set("inputService", mockInputService);

@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import kmg.core.infrastructure.utils.KmgPathUtils;
 import kmg.fund.infrastructure.context.KmgMessageSource;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolLogMsgTypes;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
+import kmg.tool.base.cmn.infrastructure.types.KmgToolBaseLogMsgTypes;
 import kmg.tool.base.two2one.domain.service.Two2OneService;
 import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
 
@@ -21,7 +21,7 @@ import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.0
+ * @version 0.1.2
  */
 public abstract class AbstractTwo2OneTool extends AbstractIoTool {
 
@@ -116,12 +116,12 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
             result = this.getIoService().initialize(AbstractIoTool.getInputPath(), this.getTemplatePath(),
                 AbstractIoTool.getOutputPath());
 
-        } catch (final KmgToolMsgException e) {
+        } catch (final KmgToolBaseMsgException e) {
 
             // ログの出力
-            final KmgToolLogMsgTypes logType     = KmgToolLogMsgTypes.KMGTOOL_LOG17000;
-            final Object[]           messageArgs = {};
-            final String             msg         = this.messageSource.getLogMessage(logType, messageArgs);
+            final KmgToolBaseLogMsgTypes logType     = KmgToolBaseLogMsgTypes.KMGTOOLBASE_LOG17000;
+            final Object[]               messageArgs = {};
+            final String                 msg         = this.messageSource.getLogMessage(logType, messageArgs);
             this.logger.error(msg, e);
 
             result = false;

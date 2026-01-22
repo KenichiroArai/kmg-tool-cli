@@ -33,9 +33,9 @@ import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.fund.infrastructure.context.SpringApplicationContextHelper;
 import kmg.fund.infrastructure.exception.KmgFundMsgException;
 import kmg.fund.infrastructure.types.msg.KmgFundGenMsgTypes;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolMsgException;
-import kmg.tool.base.cmn.infrastructure.exception.KmgToolValException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolGenMsgTypes;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
+import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseValException;
+import kmg.tool.base.cmn.infrastructure.types.KmgToolBaseGenMsgTypes;
 import kmg.tool.base.input.domain.service.PlainContentInputServic;
 import kmg.tool.base.mptf.application.service.MapTransformService;
 import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
@@ -47,7 +47,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.1
+ * @version 0.1.2
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -181,11 +181,11 @@ public class MapTransformToolTest extends AbstractKmgTest {
 
             // モックメッセージソースの設定
             Mockito.when(localMockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn("[KMGTOOL_GEN19002] テストメッセージ");
+                .thenReturn("[KMGTOOLBASE_GEN19002] テストメッセージ");
 
             // KmgToolMsgExceptionを作成（モックのスコープ内で）
-            final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN19004, new Object[] {});
+            final KmgToolBaseMsgException testException
+                = new KmgToolBaseMsgException(KmgToolBaseGenMsgTypes.KMGTOOLBASE_GEN19004, new Object[] {});
             Mockito.when(localTestTarget.getInputService().getContent()).thenThrow(testException);
 
             /* テスト対象の実行 */
@@ -291,11 +291,11 @@ public class MapTransformToolTest extends AbstractKmgTest {
 
             // モックメッセージソースの設定
             Mockito.when(localMockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn("[KMGTOOL_GEN19004] テストメッセージ");
+                .thenReturn("[KMGTOOLBASE_GEN19004] テストメッセージ");
 
             // KmgToolMsgExceptionを作成（モックのスコープ内で）
-            final KmgToolMsgException testException
-                = new KmgToolMsgException(KmgToolGenMsgTypes.KMGTOOL_GEN19004, new Object[] {});
+            final KmgToolBaseMsgException testException
+                = new KmgToolBaseMsgException(KmgToolBaseGenMsgTypes.KMGTOOLBASE_GEN19004, new Object[] {});
             Mockito.when(this.mockMapTransformService.process()).thenThrow(testException);
             Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
                 .thenReturn("テストメッセージ");
@@ -338,7 +338,7 @@ public class MapTransformToolTest extends AbstractKmgTest {
             .thenReturn(true);
 
         // 例外を事前に作成
-        final KmgToolValException testException = new KmgToolValException(new KmgValsModelImpl());
+        final KmgToolBaseValException testException = new KmgToolBaseValException(new KmgValsModelImpl());
         Mockito.when(this.mockMapTransformService.process()).thenThrow(testException);
         Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
             .thenReturn("テストメッセージ");
@@ -384,7 +384,7 @@ public class MapTransformToolTest extends AbstractKmgTest {
         validationModel.addData(validationData);
 
         // 例外を事前に作成
-        final KmgToolValException testException = new KmgToolValException(validationModel);
+        final KmgToolBaseValException testException = new KmgToolBaseValException(validationModel);
         Mockito.when(this.mockMapTransformService.process()).thenThrow(testException);
         Mockito.when(this.mockMessageSource.getGenMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
             .thenReturn("テストメッセージ");
