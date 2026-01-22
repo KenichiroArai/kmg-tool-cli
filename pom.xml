@@ -12,7 +12,7 @@
 
     <groupId>kmg.tool.cli</groupId>
     <artifactId>kmg-tool-cli</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <name>kmg-tool-cli</name>
     <description>KMGツールCLI</description>
     <packaging>jar</packaging>
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>kmg.tool.base</groupId>
             <artifactId>kmg-tool-base</artifactId>
-            <version>0.2.3</version>
+            <version>0.2.4</version>
         </dependency>
 
         <!-- Spring -->
