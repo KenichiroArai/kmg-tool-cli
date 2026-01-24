@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.mockito.Mockito;
@@ -22,7 +21,7 @@ import kmg.tool.base.input.domain.service.InputService;
  *
  * @since 0.1.0
  *
- * @version 0.1.1
+ * @version 0.1.3
  */
 @SuppressWarnings({
     "nls", "static-method"
@@ -356,7 +355,6 @@ public class AbstractInputToolTest extends AbstractKmgTest {
      *                   例外
      */
     @Test
-    @Disabled
     public void testGetInputPath_normalPrimaryInputFileExists() throws Exception {
 
         /* 期待値の定義 */
