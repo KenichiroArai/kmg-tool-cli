@@ -119,21 +119,22 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
             final Two2OneService ioService = this.getIoService();
 
             // TODO KenichiroArai 2026/01/27 一時的対応
-            this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize ioService----#####*********-----"); //$NON-NLS-1$
+            this.logger.info(
+                "-----#####*********-----AbstractTwo2OneTool.initialize ioService----#####*********-----" + ioService); //$NON-NLS-1$
 
-            if (ioService == null) {
+            // TODO KenichiroArai 2026/01/27 一時的対応
+            this.logger.info(
+                "-----#####*********-----AbstractTwo2OneTool.initialize AbstractIoTool.getInputPath()----#####*********-----" //$NON-NLS-1$
+                    + AbstractIoTool.getInputPath());
 
-                // TODO KenichiroArai 2026/01/27 一時的対応
-                // ログの出力
-                final KmgToolCliLogMsgTypes logType     = KmgToolCliLogMsgTypes.NONE;
-                final Object[]              messageArgs = {};
-                final String                msg         = this.messageSource.getLogMessage(logType, messageArgs);
-                this.logger.error(msg + " IoServiceがnullです。"); //$NON-NLS-1$
+            // TODO KenichiroArai 2026/01/27 一時的対応
+            this.logger.info(
+                "-----#####*********-----AbstractTwo2OneTool.initialize this.getTemplatePath()----#####*********-----" //$NON-NLS-1$
+                    + this.getTemplatePath());
 
-                result = false;
-                return result;
-
-            }
+            // TODO KenichiroArai 2026/01/27 一時的対応
+            this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize ioService----#####*********-----" //$NON-NLS-1$
+                + AbstractIoTool.getOutputPath());
 
             result = ioService.initialize(AbstractIoTool.getInputPath(), this.getTemplatePath(),
                 AbstractIoTool.getOutputPath());
