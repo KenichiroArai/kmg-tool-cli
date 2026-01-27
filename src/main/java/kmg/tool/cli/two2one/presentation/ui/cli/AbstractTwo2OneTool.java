@@ -113,18 +113,8 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
 
         try {
 
-            // TODO KenichiroArai 2026/01/27 一時的対応
-            this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize START-----#####*********-----"); //$NON-NLS-1$
-
-            final Two2OneService ioService = this.getIoService();
-
-            this.logger.info(
-                "-----#####*********-----AbstractTwo2OneTool.initialize ioService.toString();-----#####*********-----：" //$NON-NLS-1$
-                    + ioService.toString());
-
-            final Path inputPath  = AbstractIoTool.getInputPath();
-            final Path outputPath = AbstractIoTool.getOutputPath();
-            result = ioService.initialize(inputPath, this.templatePath, outputPath);
+            result = this.getIoService().initialize(AbstractIoTool.getInputPath(), this.getTemplatePath(),
+                AbstractIoTool.getOutputPath());
 
         } catch (final KmgToolBaseMsgException e) {
 
@@ -137,9 +127,6 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
             result = false;
 
         }
-
-        // TODO KenichiroArai 2026/01/27 一時的対応
-        this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize END----#####*********-----"); //$NON-NLS-1$
 
         return result;
 
