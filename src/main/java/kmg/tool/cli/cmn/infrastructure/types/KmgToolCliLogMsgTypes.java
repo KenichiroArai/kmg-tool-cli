@@ -15,7 +15,7 @@ import kmg.tool.cli.cmn.infrastructure.msg.KmgToolCliCmnLogMsg;
  *
  * @since 0.1.1
  *
- * @version 0.1.1
+ * @version 0.1.3
  */
 @SuppressWarnings("nls")
 public enum KmgToolCliLogMsgTypes implements KmgToolCliCmnLogMsg {
@@ -28,6 +28,27 @@ public enum KmgToolCliLogMsgTypes implements KmgToolCliCmnLogMsg {
      * @since 0.1.1
      */
     NONE("指定無し"),
+
+    /**
+     * 初期化の失敗
+     *
+     * @since 0.1.3
+     */
+    KMGTOOLCLI_LOG15000("初期化の失敗"),
+
+    /**
+     * 初期化で例外が発生しました。
+     *
+     * @since 0.1.3
+     */
+    KMGTOOLCLI_LOG15001("初期化で例外が発生しました。"),
+
+    /**
+     * 初期化の失敗
+     *
+     * @since 0.1.3
+     */
+    KMGTOOLCLI_LOG17000("初期化の失敗"),
 
     /* 定義：終了 */
     ;
