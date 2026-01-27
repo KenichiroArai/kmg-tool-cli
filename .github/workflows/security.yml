@@ -14,9 +14,7 @@ on:
     branches: [main, develop]
 
 permissions:
-  contents: write
-  security-events: write
-  pull-requests: write
+  packages: read
 
 jobs:
   security-scan:

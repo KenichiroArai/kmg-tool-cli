@@ -26,7 +26,7 @@ templateContent: |
     /**
      * {name}を設定する<br>
      * @author KenichiroArai
-     * @sine 0.1.0
+     * @since 0.1.0
      * @param {item} {name}
      */
     void set{capitalize}({type} {item});
@@ -34,7 +34,7 @@ templateContent: |
     /**
      * {name}を返す<br>
      * @author KenichiroArai
-     * @sine 0.1.0
+     * @since 0.1.0
      * @return {name}
      */
     {type} get{capitalize}();
