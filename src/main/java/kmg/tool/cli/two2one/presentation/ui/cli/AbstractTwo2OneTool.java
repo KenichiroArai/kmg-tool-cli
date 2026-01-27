@@ -113,7 +113,23 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
 
         try {
 
-            result = this.getIoService().initialize(AbstractIoTool.getInputPath(), this.getTemplatePath(),
+            final Two2OneService ioService = this.getIoService();
+
+            if (ioService == null) {
+
+                // TODO KenichiroArai 2026/01/27 一時的対応
+                // ログの出力
+                final KmgToolCliLogMsgTypes logType     = KmgToolCliLogMsgTypes.NONE;
+                final Object[]              messageArgs = {};
+                final String                msg         = this.messageSource.getLogMessage(logType, messageArgs);
+                this.logger.error(msg + " IoServiceがnullです。"); //$NON-NLS-1$
+
+                result = false;
+                return result;
+
+            }
+
+            result = ioService.initialize(AbstractIoTool.getInputPath(), this.getTemplatePath(),
                 AbstractIoTool.getOutputPath());
 
         } catch (final KmgToolBaseMsgException e) {
