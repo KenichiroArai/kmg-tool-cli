@@ -113,7 +113,13 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
 
         try {
 
+            // TODO KenichiroArai 2026/01/27 一時的対応
+            this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize START-----#####*********-----"); //$NON-NLS-1$
+
             final Two2OneService ioService = this.getIoService();
+
+            // TODO KenichiroArai 2026/01/27 一時的対応
+            this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize ioService----#####*********-----"); //$NON-NLS-1$
 
             if (ioService == null) {
 
@@ -143,6 +149,9 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
             result = false;
 
         }
+
+        // TODO KenichiroArai 2026/01/27 一時的対応
+        this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize END----#####*********-----"); //$NON-NLS-1$
 
         return result;
 
