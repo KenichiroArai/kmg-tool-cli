@@ -118,26 +118,13 @@ public abstract class AbstractTwo2OneTool extends AbstractIoTool {
 
             final Two2OneService ioService = this.getIoService();
 
-            // TODO KenichiroArai 2026/01/27 一時的対応
             this.logger.info(
-                "-----#####*********-----AbstractTwo2OneTool.initialize ioService----#####*********-----" + ioService); //$NON-NLS-1$
+                "-----#####*********-----AbstractTwo2OneTool.initialize ioService.toString();-----#####*********-----：" //$NON-NLS-1$
+                    + ioService.toString());
 
-            // TODO KenichiroArai 2026/01/27 一時的対応
-            this.logger.info(
-                "-----#####*********-----AbstractTwo2OneTool.initialize AbstractIoTool.getInputPath()----#####*********-----" //$NON-NLS-1$
-                    + AbstractIoTool.getInputPath());
-
-            // TODO KenichiroArai 2026/01/27 一時的対応
-            this.logger.info(
-                "-----#####*********-----AbstractTwo2OneTool.initialize this.getTemplatePath()----#####*********-----" //$NON-NLS-1$
-                    + this.getTemplatePath());
-
-            // TODO KenichiroArai 2026/01/27 一時的対応
-            this.logger.info("-----#####*********-----AbstractTwo2OneTool.initialize ioService----#####*********-----" //$NON-NLS-1$
-                + AbstractIoTool.getOutputPath());
-
-            result = ioService.initialize(AbstractIoTool.getInputPath(), this.getTemplatePath(),
-                AbstractIoTool.getOutputPath());
+            final Path inputPath  = AbstractIoTool.getInputPath();
+            final Path outputPath = AbstractIoTool.getOutputPath();
+            result = ioService.initialize(inputPath, this.templatePath, outputPath);
 
         } catch (final KmgToolBaseMsgException e) {
 
