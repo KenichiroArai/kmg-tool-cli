@@ -54,7 +54,7 @@
         <dependency>
             <groupId>kmg.tool.base</groupId>
             <artifactId>kmg-tool-base</artifactId>
-            <version>0.2.6</version>
+            <version>0.2.7</version>
         </dependency>
 
         <!-- Spring -->

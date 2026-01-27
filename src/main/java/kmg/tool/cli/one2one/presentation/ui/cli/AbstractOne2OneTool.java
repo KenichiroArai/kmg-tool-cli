@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import kmg.fund.infrastructure.context.KmgMessageSource;
 import kmg.tool.base.cmn.infrastructure.exception.KmgToolBaseMsgException;
-import kmg.tool.base.cmn.infrastructure.types.KmgToolBaseLogMsgTypes;
 import kmg.tool.base.one2one.domain.service.One2OneService;
+import kmg.tool.cli.cmn.infrastructure.types.KmgToolCliLogMsgTypes;
 import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
 
 /**
@@ -17,7 +17,7 @@ import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.2
+ * @version 0.1.3
  */
 public abstract class AbstractOne2OneTool extends AbstractIoTool {
 
@@ -88,9 +88,9 @@ public abstract class AbstractOne2OneTool extends AbstractIoTool {
         } catch (final KmgToolBaseMsgException e) {
 
             // ログの出力
-            final KmgToolBaseLogMsgTypes logType     = KmgToolBaseLogMsgTypes.KMGTOOLBASE_LOG15001;
-            final Object[]               messageArgs = {};
-            final String                 msg         = this.messageSource.getLogMessage(logType, messageArgs);
+            final KmgToolCliLogMsgTypes logType     = KmgToolCliLogMsgTypes.KMGTOOLCLI_LOG15001;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getLogMessage(logType, messageArgs);
             this.logger.error(msg, e);
 
         }
@@ -98,9 +98,9 @@ public abstract class AbstractOne2OneTool extends AbstractIoTool {
         if (!initializeResult) {
 
             // ログの出力
-            final KmgToolBaseLogMsgTypes logType     = KmgToolBaseLogMsgTypes.KMGTOOLBASE_LOG15000;
-            final Object[]               messageArgs = {};
-            final String                 msg         = this.messageSource.getLogMessage(logType, messageArgs);
+            final KmgToolCliLogMsgTypes logType     = KmgToolCliLogMsgTypes.KMGTOOLCLI_LOG15001;
+            final Object[]              messageArgs = {};
+            final String                msg         = this.messageSource.getLogMessage(logType, messageArgs);
             this.logger.error(msg);
 
         }
