@@ -30,7 +30,7 @@ import kmg.tool.cli.input.presentation.ui.cli.AbstractPlainContentInputTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.2
+ * @version 0.1.3
  */
 @SpringBootApplication(scanBasePackages = {
     "kmg"
@@ -177,8 +177,7 @@ public class MapTransformTool extends AbstractPlainContentInputTool {
         } catch (final KmgFundMsgException e) {
 
             /* 例外 */
-            // TODO KenichiroArai 2025/12/30 メッセージ未設定
-            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.NONE;
+            final KmgToolCliGenMsgTypes msgType     = KmgToolCliGenMsgTypes.KMGTOOLCLI_GEN19004;
             final Object[]              messageArgs = {};
             final String                msg         = this.messageSource.getGenMessage(msgType, messageArgs);
             measService.error(msg, e);
