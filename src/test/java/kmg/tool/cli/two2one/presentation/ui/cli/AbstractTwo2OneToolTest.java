@@ -31,7 +31,7 @@ import kmg.tool.cli.io.presentation.ui.cli.AbstractIoTool;
  *
  * @since 0.1.0
  *
- * @version 0.1.2
+ * @version 0.1.3
  */
 @SuppressWarnings({
     "nls", "static-method"
@@ -436,7 +436,8 @@ public class AbstractTwo2OneToolTest extends AbstractKmgTest {
     public void testInitialize_errorKmgToolMsgException() throws Exception {
 
         /* 期待値の定義 */
-        // TODO KenichiroArai 2025/09/04 #85 KmgToolMsgExceptionの検証
+        final KmgToolBaseGenMsgTypes expectedMessageTypes  = KmgToolBaseGenMsgTypes.KMGTOOLBASE_GEN01001;
+        final String                 expectedDomainMessage = "例外メッセージ";
 
         /* 準備 */
         // SpringApplicationContextHelperのモック化
@@ -451,28 +452,26 @@ public class AbstractTwo2OneToolTest extends AbstractKmgTest {
             Mockito.when(this.mockMessageSource.getLogMessage(ArgumentMatchers.any(KmgToolBaseLogMsgTypes.class),
                 ArgumentMatchers.any())).thenReturn("例外発生");
             Mockito.when(this.mockMessageSource.getExcMessage(ArgumentMatchers.any(), ArgumentMatchers.any()))
-                .thenReturn("例外メッセージ");
+                .thenReturn(expectedDomainMessage);
 
             // リフレクションを使用してメッセージソースを設定
             final var reflectionModel = new KmgReflectionModelImpl(this.testTarget);
             reflectionModel.set("messageSource", this.mockMessageSource);
 
             // 例外を事前に作成（モック設定完了後に作成）
-            final KmgToolBaseMsgException exception
-                = new KmgToolBaseMsgException(KmgToolBaseGenMsgTypes.KMGTOOLBASE_GEN01001);
+            final KmgToolBaseMsgException exception = new KmgToolBaseMsgException(expectedMessageTypes);
 
             // モックの設定（事前に作成した例外を使用）
             Mockito.when(this.mockTwo2OneService.initialize(ArgumentMatchers.any(Path.class),
                 ArgumentMatchers.any(Path.class), ArgumentMatchers.any(Path.class))).thenThrow(exception);
 
             /* テスト対象の実行 */
-            final boolean testResult = this.testTarget.initialize();
+            this.testTarget.initialize();
 
             /* 検証の準備 */
-            final boolean actual = testResult;
 
             /* 検証の実施 */
-            Assertions.assertFalse(actual, "KmgToolMsgExceptionが発生した場合、falseが返されること");
+            this.verifyKmgMsgException(exception, null, expectedDomainMessage, expectedMessageTypes);
 
         }
 

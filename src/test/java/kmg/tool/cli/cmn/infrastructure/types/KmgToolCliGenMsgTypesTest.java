@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.1.1
  *
- * @version 0.1.1
+ * @version 0.1.3
  */
 @SuppressWarnings({
     "nls", "static-method"
@@ -1112,7 +1112,7 @@ public class KmgToolCliGenMsgTypesTest {
     public void testValues_normalAllValues() {
 
         /* 期待値の定義 */
-        final int expectedCount = 16;
+        final int expectedCount = 18;
 
         /* 準備 */
 

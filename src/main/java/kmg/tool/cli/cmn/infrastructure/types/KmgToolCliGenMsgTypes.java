@@ -17,7 +17,7 @@ import kmg.tool.cli.cmn.infrastructure.msg.KmgToolCliCmnGenMsg;
  *
  * @since 0.1.1
  *
- * @version 0.1.1
+ * @version 0.1.3
  */
 @SuppressWarnings("nls")
 public enum KmgToolCliGenMsgTypes implements KmgToolCliCmnGenMsg, KmgToolCliCmnExcMsg {
@@ -109,6 +109,13 @@ public enum KmgToolCliGenMsgTypes implements KmgToolCliCmnGenMsg, KmgToolCliCmnE
     KMGTOOLCLI_GEN13004("実行時例外が発生しました。"),
 
     /**
+     * 実行中に例外が発生しました。
+     *
+     * @since 0.1.3
+     */
+    KMGTOOLCLI_GEN13005("実行中に例外が発生しました。"),
+
+    /**
      * 入力ファイルから対象パスを設定に失敗しました。
      *
      * @since 0.1.1
@@ -135,6 +142,13 @@ public enum KmgToolCliGenMsgTypes implements KmgToolCliCmnGenMsg, KmgToolCliCmnE
      * @since 0.1.1
      */
     KMGTOOLCLI_GEN19003("バリデーションエラーが発生しました。"),
+
+    /**
+     * 実行中に例外が発生しました。
+     *
+     * @since 0.1.3
+     */
+    KMGTOOLCLI_GEN19004("実行中に例外が発生しました。"),
 
     /* 定義：終了 */
 
